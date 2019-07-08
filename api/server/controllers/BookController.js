@@ -65,7 +65,7 @@ class BookController {
         const { id } = req.params
 
         if (!Number(id)) {
-            util.setError(400, 'Please input a valid id')
+            util.setError(400, 'Please input a valid numeric value')
             return util.send(res)
         }
 
@@ -88,7 +88,7 @@ class BookController {
         const { id } = req.params
 
         if(!Number(id)) {
-            util.setError(400, 'Please input a valid id')
+            util.setError(400, 'Please provide a numeric value')
             return util.send(res)
         }
 
@@ -97,7 +97,7 @@ class BookController {
             if (bookToDelete) {
                 util.setSuccess(200, 'Book deleted')
             }else {
-                util.setError(400, `Cannot find book with this ${id} id`)
+                util.setError(404, `Book with the id ${id} cannot be found`)
             }
             return util.send(res)
         }catch(error) {
